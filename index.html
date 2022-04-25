@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="initial-scale=1,maximum-scale=1,user-scalable=no"
+    />
+    <title>ADS Damage Point Explorer</title>
+    
+    <link
+      rel="stylesheet"
+      href="https://js.arcgis.com/4.23/esri/themes/light/main.css"
+    />
+      
+    <link rel="stylesheet" href="css/main.css"/>
+      
+    <script src="https://js.arcgis.com/4.23/"></script>
+
+	<script src="https://code.jquery.com/jquery-3.4.1.min.js"
+			integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+			crossorigin="anonymous"></script> <!-- integrity and crossorigin atts ensure browsers will acccept this CDN script-->
+
+    
+    <script src = "js/style.js"></script>
+    <script src = "js/main.js"></script>
+    <style>
+      html,
+      body,
+      #viewDiv {
+        padding: 0;
+        margin: 0;
+        height: 100%;
+        width: 100%;
+      }
+    #seasons-filter {
+    height: 215px;
+    width: 100%;
+    visibility: hidden;
+        }   
+
+    .season-item {
+	   width: 100%;
+	   padding: 12px;
+	   text-align: center;
+	   vertical-align: baseline;
+	   cursor: pointer;
+	   height: 35px;
+	   width: 100px;
+        }
+    .season-item:focus {
+        background-color: dimgrey;
+        }
+
+    .season-item:hover {
+        background-color: dimgrey;
+        }
+        
+      #timeSlider {
+        position: absolute;
+        left: 5%;
+        right: 5%;
+        bottom: 20px;
+      }        
+        </style>
+</head>
+<body>
+<!--	<div id="splash" class="splash">
+		<button id="splash-close-btn" class ="splash-close-btn">Close</button>
+		<div class="splash-heading">
+			<h2>Welcome!</h2>
+            <br>
+		</div>
+		<p>We're glad you chose to visit State Forest State Park.</p>
+		<p>This app is designed to help you find your way around the park. You can search for trails or your favorite scenic views in the search bar, use the filter to see what park amenities are open for winter and much more. Our favorite tool gives you the ability to submit moose sightings! Just use click on the pencil icon to bring up the edit tool. From here you can submit locations that you have spotted a moose or edit <i>your</i> submissions in case you made a mistake.</p>
+        <br><img src="img/CPWLogoLarge.png" alt="Smokey Bear Icon" align="middle" width="50" height="50" style="margin:0px 200px 0px">
+	</div>-->
+
+	<div class="data-page-splash" hidden>
+		<button id="data-close-btn" class ="splash-close-btn">Close</button>
+		<div class="splash-heading">
+			<h2>Data Sources</h2>
+		</div>
+		<ul class="data-list">
+			<li><p>Esri Javascript API: </p><a target="_blank" href="https://developers.arcgis.com/javascript/latest/">ArcGIS API developer documentation</a></li>
+			<li><p>Colorado Parks and Wildlife: </p><a target="_blank" href="https://cpw.state.co.us/">CPW Home</a>, 
+            <a target="_blank" href="https://hub.arcgis.com/datasets/d16ae81d075844de854701531e8df452/about">CPW Trails</a>
+            <a target="_blank" href="https://hub.arcgis.com/datasets/6b17044b2d2a4ef69b7b30c503bf8828/about">CPW Facilities</a></li>
+            
+		</ul>
+        
+
+
+	</div>
+
+	<div class="navbar">
+		<header class="header">
+			<h1><i>ADS Damage Point Explorer</i></h1>
+			<img src="img/Logo_of_the_United_States_Forest_Service.png" alt="US Forest Service Logo" align="middle" width="46" height="50">
+			<button id="header-button" class="header-button">Links</button>
+		</header>
+	</div>
+
+	<div id="header-dropdown-menu" class="header-dropdown-menu">
+		<ul>
+			<li id="about-menu-item">
+				<a href="#">About</a>
+			</li>
+			<li>
+				<a target="_blank" href="https://github.com/kdneelywisc/GEOG777_Project2">Project Source Code</a>
+			</li>
+			<li>
+				<a id="data-menu-item" href="#">Data Sources</a>
+			</li>
+		</ul>
+	</div>
+
+	<div class="main-container">
+		<div id="map-container" class="map-container"></div>
+			<div id="map-dropdown"></div>
+        
+
+	</div>
+    <div id="seasons-filter" class="esri-widget">
+      <div class="season-item visible-season" data-season="2020">2020</div>
+      <div class="season-item visible-season" data-season="2019">2019</div>
+      <div class="season-item visible-season" data-season="2018">2018</div>
+        <div class="season-item visible-season" data-season="2017">2017</div>
+      <div class="season-item visible-season" data-season="2016">2016</div>
+      <div class="season-item visible-season" data-season="2015">2015</div>
+    </div>  
+    <div id="viewDiv"></div>
+    <div id="timeSlider"></div>
+    <div id="titleDiv" class="esri-widget">
+      <div id="titleText">Toggle Slider to Activate ADS Damage Points Over Time</div>
+    </div>      
+  </body>
+</html>
