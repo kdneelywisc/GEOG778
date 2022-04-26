@@ -69,7 +69,7 @@ require([
       field: "TOTAL_HOURS",
      /* normalizationField: "EDUCBASECY",*/
       legendOptions: {
-        title: "FHP HOURS"
+        title: "Total FHP Survey Hours"
       },
       defaultSymbol: {
         type: "simple-fill", // autocasts as new SimpleFillSymbol()
@@ -111,7 +111,7 @@ require([
 
     const seattleLayer = new FeatureLayer({
       url: "https://services3.arcgis.com/VNV3Cd3le8zQX8yy/arcgis/rest/services/Aerial_Survey_Stats/FeatureServer",
-      title: "Aerial Survey Stats",
+      title: "Forest Service Regions",
       renderer: renderer/*,
       popupTemplate: {
         // autocast as esri/PopupTemplate
