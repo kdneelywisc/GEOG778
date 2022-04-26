@@ -224,7 +224,7 @@ require([
           expandTooltip: "Legend",
           view: view,
           content: legend,
-          expanded: true
+          expanded: false
         });
-        view.ui.add(legendExpand, "top-left");
+        view.ui.add(legendExpand, "top-right");
 });
