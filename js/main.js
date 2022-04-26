@@ -8,7 +8,8 @@ require([
     ], (Map, MapView, FeatureLayer, TimeSlider,Legend, Expand) => {
         let floodLayerView;
         const layer = new FeatureLayer({
-          url: "https://services3.arcgis.com/VNV3Cd3le8zQX8yy/arcgis/rest/services/ADS_Damage_Points_Prop_Point/FeatureServer"
+          url: "https://services3.arcgis.com/VNV3Cd3le8zQX8yy/arcgis/rest/services/ADS_Damage_Points_Prop_Point/FeatureServer",
+            title: "ADS Damage Points"
             
         });
   
